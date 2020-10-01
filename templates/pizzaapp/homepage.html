@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand"> Welcome to Mama Mia's Pizza Stop </a>
+    <a class="btn btn-success" href="/loginuser/"> Login </a>
+</nav>
+{% for message in messages %}
+<p style="text-align: center;">{{message}}</p>
+{% endfor %}
+
+<div class="container-fluid" style="position: relative; height: 900px; background-size: cover; background-image: url({%static "img/pizza.jpg" %});">
+    <div style="width: 500px; background-color: #ffa500; height: 350px; position: absolute; right: 20px; top: 50px; padding: 40px;" class="container">
+        <h1 style="text-align: center; color: #ffffff;"> Sign Up </h1>
+        <form method="post" action="/signupuser/">
+            {% csrf_token %}
+            <input class="form-control" placeholder="Name" type="text" name="name" style="margin-bottom: 10px;">
+            <input class="form-control" placeholder="Password" type="password" name="password" style="margin-bottom: 10px;">
+            <input class="form-control" placeholder="Phone Number" type="text" name="number" style="margin-bottom: 10px;">
+            <input style="display: block; margin: auto; margin-top: 20px;" class="btn btn-success" type="submit" name="">
+        </form>
+    </div>
+</div>
+{% endblock %}
